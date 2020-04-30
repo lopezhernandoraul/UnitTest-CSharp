@@ -9,37 +9,37 @@ namespace TestNinja.Mocking
 {
     public class VideoService
     {
-        private IFileReader _fileReader;
-        private IVideoRepository _repository;
+        //private IFileReader _fileReader;
+        //private IVideoRepository _repository;
 
-        public VideoService(IVideoRepository repository = null, IFileReader fileReader = null)
-        {
-            _fileReader = fileReader ?? new FileReader();
-            _repository = repository ?? new VideoRepository();
-        }
+        //public VideoService(IVideoRepository repository = null, IFileReader fileReader = null)
+        //{
+        //    _fileReader = fileReader ?? new FileReader();
+        //    _repository = repository ?? new VideoRepository();
+        //}
 
-        public string ReadVideoTitle()
-        {
-            var str = _fileReader.Read("video.txt");
-            var video = JsonConvert.DeserializeObject<Video>(str);
-            if (video == null)
-                return "Error parsing the video.";
-            return video.Title;
-        }
+        //public string ReadVideoTitle()
+        //{
+        //    var str = _fileReader.Read("video.txt");
+        //    var video = JsonConvert.DeserializeObject<Video>(str);
+        //    if (video == null)
+        //        return "Error parsing the video.";
+        //    return video.Title;
+        //}
 
-        // [] => ""
-        //[{},{},{}] => "1,2,3"
-        public string GetUnprocessedVideosAsCsv()
-        {
-            var videoIds = new List<int>();
+        //// [] => ""
+        ////[{},{},{}] => "1,2,3"
+        //public string GetUnprocessedVideosAsCsv()
+        //{
+        //    var videoIds = new List<int>();
 
-            var videos = _repository.GetUnprocessedVideos();
-                foreach (var v in videos)
-                videoIds.Add(v.Id);
+        //    var videos = _repository.GetUnprocessedVideos();
+        //        foreach (var v in videos)
+        //        videoIds.Add(v.Id);
 
-            return String.Join(",", videoIds);
+        //    return String.Join(",", videoIds);
 
-        }
+        //}
     }
 
     public class Video
